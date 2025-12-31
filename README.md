@@ -95,7 +95,7 @@ Below are representative examples comparing the Original Image, Ground Truth (Ma
 ![Example 2](report_examples/2_report.jpg)
 
 - An example of segment crack
-- 
+  
 ![Example 3](report_examples/3_report.jpg)
 
 ### 4. Computational footprints
