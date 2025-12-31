@@ -16,6 +16,9 @@ The source datasets were originally in **COCO Object Detection format** (JSON co
 - **Precision Priority:** It prioritizes precise **segmentation polygons** to capture irregular shapes (like cracks). If polygon data is missing, it falls back to filling the **bounding box**.
 - **Output:** The result is a **binary PNG mask** (single-channel) for every image, where `0` represents the background and `255` represents the target feature, matching the input requirements for CLIPSeg.
 
+## Data Split & Integrity
+The source datasets had differing directory structures: the Cracks dataset provided full Train/Valid/Test splits, while the Drywall Join dataset provided only Train/Valid splits. To ensure rigorous evaluation and prevent data leakage, the model was fine-tuned exclusively on the train partition of both datasets. For the final performance evaluation, we utilized the dedicated test set for the Cracks task. For the Drywall Join task, we utilized the held-out valid set as the testing proxy, ensuring that no images used for gradient updates (backpropagation) were ever used for scoring
+
 ## Approach / Model tried
 We utilized **CLIPSeg (CLIP-based Image Segmentation)**, a model capable of zero-shot and fine-tuned segmentation based on arbitrary text prompts.
 
@@ -64,12 +67,11 @@ The model was trained on a combined dataset sourced from Roboflow:
 
 ### 1. Training
 - To fine-tune the model GPU: python training.py
-- Model weights saved to: model.safetensors
 - Logs metrics to TensorBoard (runs/)
 
 ### 2. Evaluation
 - To generate predictions and calculate mIoU and Dice scores: python evaluate.py
-- Generates masks in a folder (predictions/)
+- Masks generated in a test/train/valid folder of datasets (Prompt_Segmentation/)
 - Saves visualisation comparison in (report_examples/)
 
 ### 3. Results
@@ -83,8 +85,17 @@ The model was trained on a combined dataset sourced from Roboflow:
 
 ### 3.1 Visual Qualitative Analysis (report_examples/)
 Below are representative examples comparing the Original Image, Ground Truth (Manual Annotation), and the Model Prediction.
+
+- An example of segment taping area
+  
 ![Example 1](report_examples/1_report.jpg)
+
+- An example of segment crack
+
 ![Example 2](report_examples/2_report.jpg)
+
+- An example of segment crack
+- 
 ![Example 3](report_examples/3_report.jpg)
 
 ### 4. Computational footprints
