@@ -7,10 +7,10 @@ from pathlib import Path
 from transformers import CLIPSegProcessor, CLIPSegForImageSegmentation
 from tqdm import tqdm
 
-MODEL_PATH = "clipseg_drywall_finetuned_ep10" 
+MODEL_PATH = "model/path/here" # IF TRAINED MODEL IS REQUIRED TO BE SUBMITTED, PLEASE LET ME KNOW 
 DATA_ROOT = "Prompt_Segmentation"
-OUTPUT_DIR = "final_predictions"
-VISUAL_DIR = "visual_report_examples" 
+OUTPUT_DIR = "predictions"
+VISUAL_DIR = "report_examples" 
 
 DATASET_MAP = [
     ("cracks-1", "segment crack"),
