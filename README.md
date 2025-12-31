@@ -100,7 +100,7 @@ Below are representative examples comparing the Original Image, Ground Truth (Ma
 
 ### 4. Computational footprints
 - Training Time: 88.10 minutes (10 epochs on GPU).
-- Hardware used: NVIDIA RTX Ada.
+- Hardware used: NVIDIA RTX 2000 Ada.
 - Inference Speed: 65.35 ms/image.
 - Model Size: 575.11 MB.
 - Weights Size: 603.0 MB.
