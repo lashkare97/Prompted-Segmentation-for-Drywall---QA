@@ -73,14 +73,19 @@ The model was trained on a combined dataset sourced from Roboflow:
 - Saves visualisation comparison in (report_examples/)
 
 ### 3. Results
-Prompt,mIoU,Dice Score
-"""segment taping area""",0.5223,0.6706
-"""segment crack""",0.3280,0.4863
+
+| Prompt | mIoU | Dice Score |
+| :--- | :--- | :--- |
+| **"segment taping area"** | 0.5223 | 0.6706 |
+| **"segment crack"** | 0.3280 | 0.4863 |
+
+- Note: The lower scores are expected due to the resolution constraints of the model (352x352), which makes pixel-thin cracks appear wider in the prediction mask than in the ground truth.
 
 ### 3.1 Visual Qualitative Analysis (report_examples/)
 Below are representative examples comparing the Original Image, Ground Truth (Manual Annotation), and the Model Prediction.
-
-
+![Example 1](report_examples/1_report.jpg)
+![Example 2](report_examples/2_report.jpg)
+![Example 3](report_examples/3_report.jpg)
 
 ### 4. Computational footprints
 - Training Time: 88.10 minutes (10 epochs on GPU).
